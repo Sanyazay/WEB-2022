@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Exercises list{% endblock %}
+
+{% block content %}
+<ul>
+    {% for workout in data.workouts %}
+        <li>
+            <a href="{% url 'workout_url' workout.id %}">{{ workout.name }}</a>
+            <div>difficulty {{ workout.difficulty }} / 10</div>
+        </li>
+   {% empty %}
+        <li>Список пуст</li>
+    {% endfor %}
+</ul>
+{% endblock %}

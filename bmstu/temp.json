@@ -1,0 +1,19 @@
+{
+  "exercises" :
+  [
+    {"id": 1,
+    "name" : "sit-ups",
+    "difficulty" : 3
+    },
+    {"id": 2,
+    "name" : "push-ups",
+    "difficulty" : 4
+    },
+    {
+      "id" : 3,
+      "name" : "pull-ups",
+      "difficulty" : 7
+    }
+  ]
+
+}
