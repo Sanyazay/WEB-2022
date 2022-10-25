@@ -19,9 +19,9 @@ from django.urls import include, path
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'user', UserViewSet)
-router.register(r'exercise', ExerciseViewSet)
-router.register(r'workout', WorkoutViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'exercises', ExerciseViewSet)
+router.register(r'workouts', WorkoutViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
