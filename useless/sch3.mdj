@@ -143,7 +143,7 @@
 											"top": -51,
 											"width": 100.8388671875,
 											"height": 13,
-											"text": "+8080: 8080Type",
+											"text": "+8000",
 											"horizontalAlignment": 0
 										}
 									],
@@ -258,7 +258,7 @@
 									"height": 13,
 									"alpha": -4.473157610628791,
 									"distance": 42.20189569201838,
-									"text": "8080: 8080Type"
+									"text": "8000"
 								},
 								{
 									"_type": "NodeLabelView",
@@ -1490,10 +1490,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGDzDbrD2cnpnA="
 							},
-							"name": "8080",
-							"type": {
-								"$ref": "AAAAAAGDzDgWH2eV1mo="
-							}
+							"name": "8000",
+							"type": ""
 						}
 					]
 				},

@@ -1,0 +1,12 @@
+.noLink{
+    
+    text-decoration : none;
+}
+.noLink:visited {
+    color:inherit;
+}
+.workoutCard{
+    background-color: rgb(161, 127, 255);
+    width: 50vw;
+    border-radius: 20px;
+}

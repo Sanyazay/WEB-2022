@@ -3,7 +3,7 @@
 {% block title %}Exercise{{ data.workout.name }}{% endblock %}
 
 {% block content %}
-    {% load static %}
+
     {%  for workout in data.workout %}
         <div>Тренировка  {{ workout.name }}</div>
         {% for exercise in workout.exercises.all %}
@@ -13,6 +13,6 @@
             </li>
 
         {% endfor %}
-        <img src="{% static data.path %}">
+
     {% endfor %}
 {% endblock %}

@@ -13,18 +13,12 @@ import { WorkoutPage } from './components/WorkoutPage';
 
 function App() {
   return (
-    
-    
-    
-    
     <Router>
     <div>
       <HeadHat />
       <Routes>
         <Route path="/" element={<WorkoutList/>} />
-        
         <Route path="/workout/:id" element={<WorkoutPage/>} />
-        
       </Routes>
     </div>
   </Router>
