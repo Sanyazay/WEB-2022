@@ -1,12 +1,18 @@
-.noLink{
-    
+.CardWrapper{
+    background-color: rgb(161, 127, 255);
+    width: auto;
+    height: 300px;
+    border-radius: 20px;
     text-decoration : none;
 }
-.noLink:visited {
+.CardWrapper:visited {
     color:inherit;
 }
-.workoutCard{
+.workou1tCard{
     background-color: rgb(161, 127, 255);
-    width: 50vw;
+    width: 500px;
+    height: 400px;
     border-radius: 20px;
+    
+    
 }

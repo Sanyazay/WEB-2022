@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const WorkoutCard: React.FC<WorkoutCardProps> = ({ workout }) => {
   return (
-    <Link className="noLink" to={`workout/${workout.pk.toString()}`}>
+    <Link className="CardWrapper" to={`workout/${workout.pk.toString()}`}>
       <div className="workoutCard">
         <ul style={{ margin: "50px" }}>
           <li>{workout.pk.toString()}</li>

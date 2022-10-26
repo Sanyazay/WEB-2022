@@ -38,7 +38,11 @@ export const WorkoutList: React.FC<WorkoutListProps> = () => {
             })
     }, [])
     return <div>
-        MainPage
-        <div>{workouts.map((workout,key) => <WorkoutCard workout={workout} key={key}></WorkoutCard>)}</div>
-        </div>
+                MainPage
+                <div className='centerAllign'>
+                    <div className='WorkoutListWrapper'>
+                        {workouts.map((workout,key) => <WorkoutCard workout={workout} key={key}></WorkoutCard>)}
+                    </div>
+                </div>
+            </div>
 };
