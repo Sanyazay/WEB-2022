@@ -20,10 +20,16 @@ class ExerciseViewSet(viewsets.ModelViewSet):
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer  # Сериализатор для модели
 
+
 class WorkoutViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint, который позволяет просматривать и редактировать акции компаний
-    """
-    # queryset всех пользователей для фильтрации по дате последнего изменения
-    queryset = Workout.objects.all()
-    serializer_class = WorkoutSerializer  # Сериализатор для модели
+    def get_queryset(self):
+        name = self.request.query_params['name'] if 'name' in self.request.query_params else ''
+        description = self.request.query_params['description'] if 'description' in self.request.query_params else ''
+        difficulty = self.request.query_params['difficulty'] if 'difficulty' in self.request.query_params else -1
+        return Workout.objects.filter(name__icontains=name,
+                description__icontains=description,
+                difficulty__gte=difficulty).order_by('name')
+
+    serializer_class = WorkoutSerializer
+
+

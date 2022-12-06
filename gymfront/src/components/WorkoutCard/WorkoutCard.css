@@ -1,18 +1,102 @@
 .CardWrapper{
-    background-color: rgb(161, 127, 255);
+    background-color: rgba(15, 15, 15, 0.603);
     width: auto;
     height: 300px;
     border-radius: 20px;
     text-decoration : none;
+    border: 2px solid rgb(68, 68, 68);
+    transition:  box-shadow 0.3s;
+    position:relative;
 }
 .CardWrapper:visited {
     color:inherit;
 }
-.workou1tCard{
-    background-color: rgb(161, 127, 255);
-    width: 500px;
-    height: 400px;
-    border-radius: 20px;
+.CardWrapper:hover {
+    border: 2px solid rgb(165, 71, 219);
+    box-shadow: 0px 0px 15px 5px rgba(165, 71, 219, 0.2);
+}
+.CardContent {
+    display:flex;
+    flex-direction: column;
+    padding: 20px;
     
+}
+.CardHeader {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.CardHeaderRightChild {
+    display:flex;
+
+}
+.CardTitleWrap {
+    font-weight: bold;
+    font-size: 28px;
     
+}
+.CardTimeWrap {
+    color: #949494;
+    margin-left: 8px;
+}
+
+.CardDifficulty{
+    padding:8px;
+    color:black;
+    font-size: 12px;
+    border-radius: 100%;
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    font-size: bold;
+    width:14px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.CardDifficulty-1{
+    background-color: rgb(54, 177, 54);
+
+}
+
+.CardDifficulty-2{
+    background-color: rgb(79, 177, 54);
+}
+
+.CardDifficulty-3{
+    background-color: rgb(89, 177, 54);
+}
+
+.CardDifficulty-4{
+    background-color: rgb(109, 177, 54);
+}
+
+.CardDifficulty-5{
+    background-color: rgb(140, 177, 54);
+}
+
+.CardDifficulty-6{
+    background-color: rgb(175, 177, 54);
+}
+
+.CardDifficulty-7{
+    background-color: rgb(177, 138, 54);
+}
+
+.CardDifficulty-8{
+    background-color: rgb(177, 109, 54);
+}
+
+.CardDifficulty-9{
+    background-color: rgb(177, 79, 54);
+}
+
+.CardDifficulty-10{
+    background-color: rgb(177, 54, 54);
+}
+
+.CardDescriptionWrap {
+    font-size: 14px;
+    margin-top:24px;
 }

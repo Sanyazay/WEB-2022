@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+html {
+  background: rgb(25,11,32);
+  background: radial-gradient(circle, rgba(25,11,32,1) 0%, rgba(0, 0, 0,1) 100%);
+}
+body {
+  color : white;
+  font-family: "Roboto";
+}

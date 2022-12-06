@@ -1,9 +1,13 @@
 .centerAllign {
     display: flex;
     justify-content:center;
+    margin-top: 50px;
 
 }
-
+.navbar {
+    margin-left:40px;
+    margin-top: 20px;
+}
 .WorkoutListWrapper {
     display: grid;
     grid-template-columns: 28vw 28vw 28vw;

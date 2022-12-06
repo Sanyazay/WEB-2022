@@ -1,4 +1,4 @@
-import { IWorkout } from "../WorkoutList/WorkoutList";
+import { IWorkout } from "../../App";
 
 
 

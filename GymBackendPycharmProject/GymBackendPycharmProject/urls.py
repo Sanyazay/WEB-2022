@@ -21,7 +21,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'exercises', ExerciseViewSet)
-router.register(r'workouts', WorkoutViewSet)
+router.register(r'workouts', WorkoutViewSet, basename="Workouts")
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
