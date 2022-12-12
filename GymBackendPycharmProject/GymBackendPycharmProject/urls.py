@@ -17,6 +17,7 @@ from django.contrib import admin
 from Gymlog.views import UserViewSet, ExerciseViewSet, WorkoutViewSet
 from django.urls import include, path
 from rest_framework import routers
+import Gymlog.views as views
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -28,6 +29,7 @@ router.register(r'workouts', WorkoutViewSet, basename="Workouts")
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-
+    path('authorize/', views.auth_view,name="auth"),
     path('admin/', admin.site.urls),
+    path('account/create/',views.create_user,name="create_user")
 ]

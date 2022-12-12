@@ -25,11 +25,13 @@ SECRET_KEY = 'django-insecure-y1gei(rs10vcf+r)otptsy(%m%xyuv$ht%v^)skv_d%g%q&4mn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+#CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 
 
 # Application definition
 
+
+AUTH_USER_MODEL = 'Gymlog.User'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'Gymlog'
+    'Gymlog',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

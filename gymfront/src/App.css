@@ -39,6 +39,10 @@
 html {
   background: rgb(25,11,32);
   background: radial-gradient(circle, rgba(25,11,32,1) 0%, rgba(0, 0, 0,1) 100%);
+  
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+  
 }
 body {
   color : white;

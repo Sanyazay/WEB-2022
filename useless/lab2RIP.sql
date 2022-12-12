@@ -15,7 +15,7 @@ select * from workouts_exercises;
 truncate workouts_exercises;
 truncate exercises;
 
-insert into users (login, password) values("pvrts","1233"),("shako","bukakchi"),("bibik", "camryOneLove");
+insert into users (login, password,is_superuser) values("pvrts","1233",0),("shako","bukakchi",0),("bibik", "camryOneLove",0);
 
 insert into workouts (name,description,difficulty,duration,owner_id) values("Для реальных нигеров","все что тебе нужно, чтобы стать OG",10,"01:30:00",1), ("рыцарь","сделай из своего тела латы",7,"01:15:00",2);
 

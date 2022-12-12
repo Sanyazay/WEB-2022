@@ -9,6 +9,8 @@ import {
 } from 'react-router-dom';
 import { HeadHat } from './components/HeadHat';
 import { WorkoutPage } from './components/WorkoutPage';
+import { FavouritesPage } from './components/FavouritesPage';
+import { RegPage } from './components/RegPage';
 interface IExercise {
   pk: Number,
   name: String,
@@ -45,6 +47,8 @@ function App() {
       <Routes>
         <Route path="/" element={<WorkoutList/>} />
         <Route path="/workout/:id" element={<WorkoutPage/>} />
+        <Route path="favourites" element={<FavouritesPage/>}/>
+        <Route path="regPage" element={<RegPage/>}/>
       </Routes>
     </div>
   </Router>
