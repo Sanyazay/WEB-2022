@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         # Модель, которую мы сериализуем
         model = User
         # Поля, которые мы сериализуем
-        fields = ["pk", "login", "password"]
+        fields = ["pk", "username", "password"]
 
 
 class ExerciseSerializer(serializers.ModelSerializer):

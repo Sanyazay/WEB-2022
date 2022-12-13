@@ -11,6 +11,7 @@ import { HeadHat } from './components/HeadHat';
 import { WorkoutPage } from './components/WorkoutPage';
 import { FavouritesPage } from './components/FavouritesPage';
 import { RegPage } from './components/RegPage';
+import { AuthPage } from './components/AuthPage';
 interface IExercise {
   pk: Number,
   name: String,
@@ -31,7 +32,7 @@ export const WorkoutContext = React.createContext<IWorkout[]> ([]);
 function App() {
   const [workouts,setWorkouts] = useState<IWorkout[]>([]);
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/workouts/')
+    fetch('http://127.0.0.1:8000/api/workouts/')
         .then(response => response.json())
         
         .then(data => {
@@ -48,7 +49,8 @@ function App() {
         <Route path="/" element={<WorkoutList/>} />
         <Route path="/workout/:id" element={<WorkoutPage/>} />
         <Route path="favourites" element={<FavouritesPage/>}/>
-        <Route path="regPage" element={<RegPage/>}/>
+        <Route path="registration" element={<RegPage/>}/>
+        <Route path="auth" element={<AuthPage/>}/>
       </Routes>
     </div>
   </Router>

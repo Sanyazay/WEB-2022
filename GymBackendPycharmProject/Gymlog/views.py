@@ -1,16 +1,21 @@
 import json
+import uuid
 
 from django.shortcuts import render
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from Gymlog.serializers import UserSerializer, ExerciseSerializer, WorkoutSerializer
 from Gymlog.models import User, Exercise, Workout
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-
-
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -31,6 +36,8 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 
 
 class WorkoutViewSet(viewsets.ModelViewSet):
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     def get_queryset(self):
         name = self.request.query_params['name'] if 'name' in self.request.query_params else ''
         description = self.request.query_params['description'] if 'description' in self.request.query_params else ''
@@ -42,26 +49,104 @@ class WorkoutViewSet(viewsets.ModelViewSet):
     serializer_class = WorkoutSerializer
 
 
-def auth_view(request):
-    username = request.POST["username"] # допустим передали username и password
-    password = request.POST["password"]
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return HttpResponse("{'status': 'ok'}")
-    else:
-        return HttpResponse("{'status': 'error', 'error': 'login failed'}")
 
 #@csrf_exempt
 @api_view(["POST"])
 def create_user(request):
     data = json.loads(request.body)
     print(data)
-    login = data["login"]
+    username = data["login"]
     password = data["password"]
-    u = User.objects.create(login=login, password=password)
+    u = User.objects.create_user(username=username, password=password)
     if u is not None:
 
         return HttpResponse("{'status': 'ok'}")
     else:
         return HttpResponse("{'status': 'error', 'error': 'login failed'}")
+
+
+
+
+class AuthView(APIView):
+
+
+
+    def post(self,request):
+
+        data = json.loads(request.body)
+        print(data)
+        username = data["login"]
+        password = data["password"]
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            random_key = uuid.uuid4()
+            #session_storage.set(random_key, login)
+            u = User.objects.get(username = username)
+            u.last_login = timezone.now()
+            u.save()
+
+            #print(user.is_authenticated)
+            print(user.password)
+            response = Response("{\"status\": \"ok\"}", content_type="json")
+            #response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
+            return response
+        else:
+            return Response("{\"status\": \"error\", \"error\": \"login failed\"}")
+
+
+
+
+
+
+
+
+
+
+
+
+# @api_view(["POST"])
+# def auth_view(request):
+#
+#     data = json.loads(request.body)
+#     print(data)
+#     username = data["login"]
+#     password = data["password"]
+#     user = authenticate(request, username=username, password=password)
+#     print(user)
+#     if user is not None:
+#         login(request, user)
+#         random_key = uuid.uuid4()
+#         #session_storage.set(random_key, login)
+#         u = User.objects.get(username = username)
+#         u.last_login = timezone.now()
+#         u.save()
+#
+#         #print(user.is_authenticated)
+#         print(user.password)
+#         response = Response("{\"status\": \"ok\"}", content_type="json")
+#         #response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
+#         return response
+#     else:
+#         return Response("{\"status\": \"error\", \"error\": \"login failed\"}")
+# def auth_view(request):
+#     username = request.POST["username"] # допустим передали username и password
+#     password = request.POST["password"]
+#     user = authenticate(request, username=username, password=password)
+#     if user is not None:
+#         login(request, user)
+#         return HttpResponse("{\"status\": \"ok\"}")
+#     else:
+#         return HttpResponse("{\"status\": \"error\", \"error\": \"login failed\"}")
+
+class ExampleView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        content = {
+            'user': str(request.user),  # `django.contrib.auth.User` instance.
+            'auth': str(request.auth),  # None
+        }
+        return Response(content)

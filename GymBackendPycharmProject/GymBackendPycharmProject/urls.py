@@ -27,9 +27,10 @@ router.register(r'workouts', WorkoutViewSet, basename="Workouts")
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('authorize/', views.auth_view,name="auth"),
-    path('admin/', admin.site.urls),
-    path('account/create/',views.create_user,name="create_user")
+    path('api/', include(router.urls)),
+    path('api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/authorize/', views.AuthView.as_view(),name="auth"),
+    path('api/admin/', admin.site.urls),
+    path('api/account/create/',views.create_user,name="create_user"),
+    path('api/test/',views.ExampleView.as_view(), name="test")
 ]

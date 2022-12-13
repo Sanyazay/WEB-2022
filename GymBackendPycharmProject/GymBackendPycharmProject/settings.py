@@ -25,12 +25,18 @@ SECRET_KEY = 'django-insecure-y1gei(rs10vcf+r)otptsy(%m%xyuv$ht%v^)skv_d%g%q&4mn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+#CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:3000','http://localhost:3000']
 
 
-# Application definition
+#Application definition
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
 
-
+]
+CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'Gymlog.User'
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,12 +49,18 @@ INSTALLED_APPS = [
     'Gymlog',
     'corsheaders',
 ]
-
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.BasicAuthentication',
+#         'rest_framework.authentication.SessionAuthentication',
+#     ]
+# }
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -118,12 +130,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_TZ = True
-
+LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
