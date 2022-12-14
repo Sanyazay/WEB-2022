@@ -55,14 +55,14 @@ class WorkoutViewSet(viewsets.ModelViewSet):
 def create_user(request):
     data = json.loads(request.body)
     print(data)
-    username = data["login"]
+    username = data["username"]
     password = data["password"]
     u = User.objects.create_user(username=username, password=password)
     if u is not None:
 
-        return HttpResponse("{'status': 'ok'}")
+        return HttpResponse("{\"status\": \"ok\"}")
     else:
-        return HttpResponse("{'status': 'error', 'error': 'login failed'}")
+        return HttpResponse("{\"status\": \"error\", \"error\": \"login failed\"}")
 
 
 

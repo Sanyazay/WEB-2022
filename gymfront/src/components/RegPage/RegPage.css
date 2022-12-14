@@ -1,4 +1,86 @@
 .buttonStyle {
-    width: 100px;
-    height: 20px;
+    width: 422px;
+    height: 60px;
+    background: radial-gradient(circle, rgb(168, 25, 149) 0%, rgb(236, 109, 219) 100%);
+    border-radius: 14px;
+    color:#ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    border: 3px solid rgb(95, 21, 138);
+    margin-top:5px;
+    font-weight: 400;
+}
+.buttonStyle:active {
+    background:rgba(15, 15, 15, 1);
+}
+
+.RegWrapper {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+.RegCard {
+    width: 422px;
+    
+    
+
+    /* background: linear-gradient(86.68deg, rgba(98, 30, 150, 0.192) 0%, rgba(37, 72, 255, 0.156) 99.67%); */
+    /* opacity: 0.65; */
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.InputField {
+    
+    color: #FFFFFF;
+    
+    width: 422px;
+    height: 60px;
+    font-weight: 400;
+    font-size: 20px;
+    background: rgba(15, 15, 15, 1);
+    border: 3px solid rgba(48, 48, 61, 1);
+    border-radius: 14px;
+    outline:none;
+    padding-left:10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+
+
+
+.text1wrapper {
+    display:flex;
+    justify-content: center;
+}
+
+.text1 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.text2wrapper {
+    width:422px;
+    display:flex;
+    justify-content: left;
+    align-items:baseline;
+    margin-top: 20px;
+}
+
+.text21 {
+    font-size: 15px;
+    font-weight: 400;
+}
+.text22 {
+    margin-left:15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.linkStyle {
+    color:rgb(183, 77, 197)
 }

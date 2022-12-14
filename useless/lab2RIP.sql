@@ -8,13 +8,13 @@ GRANT ALL PRIVILEGES ON gym_db.* TO dbuser@'localhost';
 use gym_db;
 show tables;
 
-select * from users WHERE login = "zaycev";
+select * from users;
 select * from workouts;
 select * from exercises;
 select * from workouts_exercises;
 truncate workouts_exercises;
 truncate exercises;
-
+DELETE from users WHERE id = 3;
 insert into users (login, password,is_superuser) values("pvrts","1233",0),("shako","bukakchi",0),("bibik", "camryOneLove",0);
 
 insert into workouts (name,description,difficulty,duration,owner_id) values("Для реальных нигеров","все что тебе нужно, чтобы стать OG",10,"01:30:00",1), ("рыцарь","сделай из своего тела латы",7,"01:15:00",2);
@@ -29,7 +29,7 @@ insert into workouts (name,description,difficulty,duration,owner_id) values
  ("Детский набор","отличный набор для маленьких спортсменов",3,"00:45:00",1),
  ("Демон-Итер","25 душ, 7 слотов, годлайк ",2,"00:25:00",1)
  ;
- 
+
 
 
 insert into workouts_exercises (workout_id,exercise_id) values(1,1),(1,2),(1,3),
