@@ -13,7 +13,7 @@ export const WorkoutList: React.FC<WorkoutListProps> = () => {
     
     const workouts = useContext(WorkoutContext);
     
-    
+    console.log(workouts)
     
     return <div>
                 <div className='navbar'>MainPage</div>

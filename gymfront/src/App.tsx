@@ -29,7 +29,7 @@ export interface IWorkout {
   exercises: IExercise[]
 }
 export const WorkoutContext = React.createContext<IWorkout[]> ([]);
-// export const Context = React.createContext<IWorkout[]> ([]); --------------------------------------------------------------------
+
 function App() {
   const [workouts,setWorkouts] = useState<IWorkout[]>([]);
   useEffect(() => {
@@ -38,8 +38,9 @@ function App() {
         
         .then(data => {
             setWorkouts(data);
-
+            
         })
+        
 }, [])
   return (
     <WorkoutContext.Provider value = {workouts}>

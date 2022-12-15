@@ -3,22 +3,23 @@ import React, { useState } from 'react';
 import { AuthPageProps } from './AuthPage.types';
 
 import './AuthPage.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 export const AuthPage: React.FC<AuthPageProps> = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-
+    const [auth,setAuth] = useState(0)
     const HandleClick = () => {
-        fetch('/api/authorize/',{method : "POST", body: JSON.stringify({"login": "admin", "password": "admin"})})
+        fetch('/api/authorize/',{method : "POST", body: JSON.stringify({"username": login, "password": password})})
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            console.log(data)
+            if(JSON.parse(data)["status"] === "ok"){
+                setAuth(1)
+            }
+        });
       };
-    // const HandleClick1 = () => {
-    //     fetch('/api/test/')
-    //       .then((res) => res.json())
-    //       .then((data) => console.log(data));
-    //   };
+    if (auth === 0) {
     return <div>
     
     <div className='RegWrapper'>
@@ -43,9 +44,10 @@ export const AuthPage: React.FC<AuthPageProps> = () => {
                     
                 </div>
             </div>
-        
-        
     </div>
     </div>
     </div>
+    } else {
+        return <Navigate to = {"/"}></Navigate>
+    }
 };

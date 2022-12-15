@@ -1,1 +1,6 @@
-export type HeadHatProps = {};
+import { IWorkout } from "../../App";
+
+export type HeadHatProps = {
+    
+    
+};

@@ -59,8 +59,8 @@ def create_user(request):
     password = data["password"]
     u = User.objects.create_user(username=username, password=password)
     if u is not None:
-
-        return HttpResponse("{\"status\": \"ok\"}")
+        response = Response("{\"status\": \"ok\"}", content_type="json")
+        return response
     else:
         return HttpResponse("{\"status\": \"error\", \"error\": \"login failed\"}")
 
@@ -75,7 +75,7 @@ class AuthView(APIView):
 
         data = json.loads(request.body)
         print(data)
-        username = data["login"]
+        username = data["username"]
         password = data["password"]
         user = authenticate(request, username=username, password=password)
         print(user)
@@ -90,7 +90,7 @@ class AuthView(APIView):
             #print(user.is_authenticated)
             print(user.password)
             response = Response("{\"status\": \"ok\"}", content_type="json")
-            #response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
+            response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
             return response
         else:
             return Response("{\"status\": \"error\", \"error\": \"login failed\"}")
