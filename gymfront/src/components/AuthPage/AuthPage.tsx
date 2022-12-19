@@ -4,22 +4,26 @@ import { AuthPageProps } from './AuthPage.types';
 
 import './AuthPage.css';
 import { Link, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setAuthOnAction, useAuth } from '../../slices/dataSlice';
 
 export const AuthPage: React.FC<AuthPageProps> = () => {
+    const dispatch = useDispatch()
+    
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    const [auth,setAuth] = useState(0)
+    
     const HandleClick = () => {
         fetch('/api/authorize/',{method : "POST", body: JSON.stringify({"username": login, "password": password})})
           .then((res) => res.json())
           .then((data) => {
             console.log(data)
             if(JSON.parse(data)["status"] === "ok"){
-                setAuth(1)
+                dispatch(setAuthOnAction())
             }
         });
       };
-    if (auth === 0) {
+    if (useAuth() === 0) {
     return <div>
     
     <div className='RegWrapper'>

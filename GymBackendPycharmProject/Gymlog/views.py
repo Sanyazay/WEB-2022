@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 
 from Gymlog.serializers import UserSerializer, ExerciseSerializer, WorkoutSerializer
 from Gymlog.models import User, Exercise, Workout
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
@@ -36,8 +36,8 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 
 
 class WorkoutViewSet(viewsets.ModelViewSet):
-    # authentication_classes = [SessionAuthentication, BasicAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     def get_queryset(self):
         name = self.request.query_params['name'] if 'name' in self.request.query_params else ''
         description = self.request.query_params['description'] if 'description' in self.request.query_params else ''
@@ -81,7 +81,7 @@ class AuthView(APIView):
         print(user)
         if user is not None:
             login(request, user)
-            random_key = uuid.uuid4()
+            #random_key = uuid.uuid4()
             #session_storage.set(random_key, login)
             u = User.objects.get(username = username)
             u.last_login = timezone.now()
@@ -90,15 +90,18 @@ class AuthView(APIView):
             #print(user.is_authenticated)
             print(user.password)
             response = Response("{\"status\": \"ok\"}", content_type="json")
-            response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
+            #response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
             return response
         else:
             return Response("{\"status\": \"error\", \"error\": \"login failed\"}")
 
 
 
-
-
+@api_view(["GET"])
+def logout_view(request):
+    logout(request)
+    response = Response("{\"status\": \"ok\"}", content_type="json")
+    return response
 
 
 

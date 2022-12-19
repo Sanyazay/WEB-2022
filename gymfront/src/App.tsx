@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import store from "./store";
 import './App.css';
 import { WorkoutList } from './components/WorkoutList';
 import {
@@ -12,6 +12,8 @@ import { WorkoutPage } from './components/WorkoutPage';
 import { FavouritesPage } from './components/FavouritesPage';
 import { RegPage } from './components/RegPage';
 import { AuthPage } from './components/AuthPage';
+import { Provider, useDispatch } from 'react-redux';
+import { setDataAction } from './slices/dataSlice';
 interface IExercise {
   pk: Number,
   name: String,
@@ -28,22 +30,27 @@ export interface IWorkout {
   duration: String,
   exercises: IExercise[]
 }
-export const WorkoutContext = React.createContext<IWorkout[]> ([]);
+
 
 function App() {
-  const [workouts,setWorkouts] = useState<IWorkout[]>([]);
+  const dispatch = useDispatch()
+  
+  
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/workouts/')
+    fetch('http://127.0.0.1:8000/api/workouts/' )
         .then(response => response.json())
         
         .then(data => {
-            setWorkouts(data);
+            dispatch(setDataAction(data));
+            console.log(data.length)
             
         })
         
 }, [])
+  
   return (
-    <WorkoutContext.Provider value = {workouts}>
+    
+    
     <Router>
     <div>
       <HeadHat />
@@ -56,8 +63,10 @@ function App() {
       </Routes>
     </div>
   </Router>
-  </WorkoutContext.Provider>
+  
+  
   );
 }
 
 export default App;
+
