@@ -33,5 +33,6 @@ urlpatterns = [
     path('api/admin/', admin.site.urls),
     path('api/account/create/',views.create_user,name="create_user"),
     path('api/test/',views.ExampleView.as_view(), name="test"),
-    path('api/logout/', views.logout_view,name="logout"),
+    path('api/logout/', views.logout,name="logout"),
+    path('api/favourites/', views.favourites,name="favourites")
 ]

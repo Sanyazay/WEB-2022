@@ -1,23 +1,24 @@
 import json
 import uuid
-
+import redis
 from django.shortcuts import render
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from GymBackendPycharmProject import settings
 from Gymlog.serializers import UserSerializer, ExerciseSerializer, WorkoutSerializer
 from Gymlog.models import User, Exercise, Workout
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
-
+session_storage = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT)
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint, который позволяет просматривать и редактировать акции компаний
@@ -36,8 +37,7 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 
 
 class WorkoutViewSet(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+
     def get_queryset(self):
         name = self.request.query_params['name'] if 'name' in self.request.query_params else ''
         description = self.request.query_params['description'] if 'description' in self.request.query_params else ''
@@ -66,46 +66,58 @@ def create_user(request):
 
 
 
+@api_view(["GET"])
+def logout(request):
+    ssid = request.COOKIES.get("session_id")
+    print(ssid)
+    if ssid is not None:
+        session_storage.delete(ssid)
+        return Response(status=status.HTTP_200_OK, data="{\"status\": \"successfully logged out\"}")
+    else:
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 
 class AuthView(APIView):
-
-
-
-    def post(self,request):
-
+    def post(self, request):
         data = json.loads(request.body)
-        print(data)
         username = data["username"]
         password = data["password"]
         user = authenticate(request, username=username, password=password)
-        print(user)
         if user is not None:
-            login(request, user)
-            #random_key = uuid.uuid4()
-            #session_storage.set(random_key, login)
-            u = User.objects.get(username = username)
+            key = str(uuid.uuid4())
+            session_storage.set(key, username)
+            u = User.objects.get(username=username)
             u.last_login = timezone.now()
             u.save()
-
-            #print(user.is_authenticated)
-            print(user.password)
             response = Response("{\"status\": \"ok\"}", content_type="json")
-            #response.set_cookie("session_id", random_key)  # пусть ключем для куки будет session_id
+            response.set_cookie("session_id", key)
             return response
         else:
             return Response("{\"status\": \"error\", \"error\": \"login failed\"}")
 
 
 
+# @api_view(["GET"])
+# def logout_view(request):
+#     logout(request)
+#     response = Response("{\"status\": \"ok\"}", content_type="json")
+#     return response
+
+
+
+
+
 @api_view(["GET"])
-def logout_view(request):
-    logout(request)
-    response = Response("{\"status\": \"ok\"}", content_type="json")
-    return response
-
-
-
-
+def favourites(request):
+    ssid = request.COOKIES.get("session_id")
+    if ssid is not None:
+        user = User.objects.get(username=session_storage.get(request.COOKIES.get('session_id')).decode())
+        print(Workout.objects.filter(owner = user))
+        response = WorkoutSerializer(Workout.objects.filter(owner=user),many=True)
+        return Response(response.data)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)
 
 
 

@@ -36,6 +36,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 
 ]
+ALLOWED_HOSTS = []
 CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'Gymlog.User'
 INSTALLED_APPS = [
@@ -146,3 +147,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379

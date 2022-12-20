@@ -8,7 +8,7 @@ export const HeadHat: React.FC<HeadHatProps> = () => {
     
     
     const HandleClick = () => {
-        fetch('http://127.0.0.1:8000/api/logout/')
+        fetch('/api/logout/')
         .then(response => response.json())
         
         .then(data => {
@@ -20,7 +20,7 @@ export const HeadHat: React.FC<HeadHatProps> = () => {
     return <div className="HeadWrapper">
         <div className="iconsWrapper">
             <Link className='HomeButton' to="/"> Home </Link>
-            <Link to="/FavouritesPage">
+            <Link to="/favourites">
 
                 <StarIcon viewBox='0 0 100 100' width="50px" height="50px" fill = "white" className='starStyle'></StarIcon>
             </Link>

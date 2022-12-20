@@ -36,7 +36,6 @@ class UserManager(BaseUserManager):
 # Create your models here.
 class User(user_models.AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True)
-
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -73,3 +72,5 @@ class Workout(models.Model):
     class Meta:
         managed = True
         db_table = 'workouts'
+
+
