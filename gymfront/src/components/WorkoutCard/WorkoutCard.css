@@ -40,6 +40,26 @@
     margin-left: 8px;
 }
 
+.CardFav{
+    fill:red;
+    width: 30px;
+    position:absolute;
+    
+    left:20px;
+    top:-5px;
+}
+.CardFav-no{
+    fill:rgb(255, 255, 255);
+    width: 30px;
+    position:absolute;
+    
+    left:20px;
+    top:-5px;
+}
+
+
+
+
 .CardDifficulty{
     padding:8px;
     color:black;

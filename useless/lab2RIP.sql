@@ -17,7 +17,10 @@ truncate exercises;
 DELETE from users WHERE id = 3;
 insert into users (login, password,is_superuser) values("pvrts","1233",0),("shako","bukakchi",0),("bibik", "camryOneLove",0);
 
-insert into workouts (name,description,difficulty,duration,owner_id) values("Для реальных нигеров","все что тебе нужно, чтобы стать OG",10,"01:30:00",1), ("рыцарь","сделай из своего тела латы",7,"01:15:00",2);
+insert into workouts (name,description,difficulty,duration,creator_id) values("Для реальных нигеров","все что тебе нужно, чтобы стать OG",10,"01:30:00",1), ("рыцарь","сделай из своего тела латы",7,"01:15:00",2),("Молодая мама","простой набор для восстановления молодых мам после беременности.",2,"00:30:00",1),
+ ("Детский набор","отличный набор для маленьких спортсменов",3,"00:45:00",1),
+ ("Демон-Итер","25 душ, 7 слотов, годлайк ",2,"00:25:00",1)
+ ;
 
 insert into exercises (name,description,muscle_group,difficulty,video_url) 
 values("Приседания","Базовое упражнение, которое поможет тебе прокачать твои костыли и сделать из них настоящие гусеницы для танка.", "ноги", 3, "youtube"),

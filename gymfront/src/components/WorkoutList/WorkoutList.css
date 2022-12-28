@@ -15,3 +15,111 @@
     align-items:center;
     width: 90vw;
 }
+.searchBar {
+    color: #FFFFFF;
+    width: 400px;
+    height: 60px;
+    font-weight: 400;
+    font-size: 20px;
+    background: rgba(15, 15, 15, 1);
+    border: 3px solid rgba(48, 48, 61, 1);
+    border-radius: 14px;
+    outline:none;
+    padding-left:10px;
+    box-sizing: border-box;
+    /* margin-bottom: 15px; */
+}
+
+.difficultySelect {
+    color: #FFFFFF;
+    width: 50px;
+    height: 60px;
+    font-weight: 400;
+    font-size: 20px;
+    background: rgba(15, 15, 15, 1);
+    border: 3px solid rgba(48, 48, 61, 1);
+    border-radius: 14px;
+    outline:none;
+    padding-left:10px;
+    box-sizing: border-box;
+}
+
+.durationBar {
+    margin-left:25px;
+    margin-right:15px;
+    color: #FFFFFF;
+    width: 200px;
+    height: 60px;
+    font-weight: 400;
+    font-size: 20px;
+    background: rgba(15, 15, 15, 1);
+    border: 3px solid rgba(48, 48, 61, 1);
+    border-radius: 14px;
+    outline:none;
+    padding-left:10px;
+    box-sizing: border-box;
+    /* margin-bottom: 15px; */
+}
+
+.SearchStyle {
+    margin-left: 25px;
+    width: 100px;
+    height: 60px;
+    background: radial-gradient(circle, rgb(168, 25, 149) 0%, rgb(236, 109, 219) 100%);
+    border-radius: 14px;
+    color:#ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    border: 3px solid rgb(95, 21, 138);
+    /* margin-top:5px; */
+    font-weight: 400;
+}
+.SearchStyle:active {
+    background:rgba(15, 15, 15, 1);
+}
+
+.RefreshStyle {
+    width: 100px;
+    height: 60px;
+    background: radial-gradient(circle, rgb(168, 25, 149) 0%, rgb(236, 109, 219) 100%);
+    border-radius: 14px;
+    color:#ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    border: 3px solid rgb(95, 21, 138);
+    /* margin-top:5px; */
+    font-weight: 400;
+}
+.RefreshStyle:active {
+    background:rgba(15, 15, 15, 1);
+}
+
+.searchWrap {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SearchIconStyle {
+    width: 35px;
+    height: 35px;
+    fill:rgb(190, 48, 209);
+    margin-left: 15px;
+}
+.RefreshIconStyle {
+    width: 35px;
+    height: 35px;
+    fill:rgb(190, 48, 209);
+    margin-left: 25px;
+}
+
+@media (max-width: 480px) {
+
+    .WorkoutListWrapper {
+        display: grid;
+        grid-template-columns: 70vw;
+        gap: 3vw;
+        align-items:center;
+        width: 90vw;
+    }
+}

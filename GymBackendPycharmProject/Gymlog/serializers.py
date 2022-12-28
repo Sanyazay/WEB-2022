@@ -25,5 +25,5 @@ class WorkoutSerializer(serializers.ModelSerializer):
         # Модель, которую мы сериализуем
         model = Workout
         # Поля, которые мы сериализуем
-        fields = ["pk", "name", "description", "difficulty", "duration", "exercises", "owner"]
+        fields = ["pk", "name", "description", "difficulty", "duration", "exercises", "user_favourites","creator","publication_state","publication_date","approve_date","creation_date"]
 

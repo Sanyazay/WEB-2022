@@ -67,7 +67,12 @@ class Workout(models.Model):
     difficulty = models.SmallIntegerField()
     duration = models.TimeField()
     exercises = models.ManyToManyField(Exercise)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_favourites = models.ManyToManyField(User)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='creator_FK')
+    publication_state = models.IntegerField(default=0)
+    publication_date = models.DateField(null=True)
+    approve_date = models.DateField(null=True)
+    creation_date = models.DateField(default=timezone.now())
 
     class Meta:
         managed = True

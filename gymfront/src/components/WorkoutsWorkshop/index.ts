@@ -1,0 +1,1 @@
+export { WorkoutsWorkshop } from './WorkoutsWorkshop';

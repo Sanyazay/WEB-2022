@@ -1,0 +1,25 @@
+.status{
+    
+    
+    position:absolute;
+    
+    left:20px;
+    bottom:15px;
+    font-size: 30px;
+}
+
+.style-0 {
+    color:rgb(245, 232, 56);
+}
+
+.style-1 {
+    color:rgb(188, 255, 2);
+}
+
+.style-2 {
+    color:rgb(54, 248, 6);
+}
+
+.style--1 {
+    color:rgb(255, 0, 0);
+}

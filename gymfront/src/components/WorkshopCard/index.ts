@@ -1,0 +1,1 @@
+export { WorkshopCard } from './WorkshopCard';

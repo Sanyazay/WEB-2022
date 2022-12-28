@@ -32,7 +32,21 @@ urlpatterns = [
     path('api/authorize/', views.AuthView.as_view(),name="auth"),
     path('api/admin/', admin.site.urls),
     path('api/account/create/',views.create_user,name="create_user"),
-    path('api/test/',views.ExampleView.as_view(), name="test"),
+    path('api/account/createsuper/',views.create_super_user,name="create_usersuper"),
+    # path('api/test/',views.ExampleView.as_view(), name="test"),
     path('api/logout/', views.logout,name="logout"),
-    path('api/favourites/', views.favourites,name="favourites")
+    path('api/favourites/', views.favourites,name="favourites"),
+    path('api/add-favourites/', views.add_favourite,name="add-favourites"),
+    path('api/isAuth/', views.checkauth,name="isAuth"),
+    path('api/createworkout/', views.add_workout,name="createWorkout"),
+    path('api/managerworkouts/', views.tobePublictedWorkouts, name="tobePublictedWorkouts"),
+    path('api/creator_workouts/', views.workouts_forCreator, name="workoutsforCreator"),
+    path('api/change_workout_state/', views.change_workout_state, name="changeWorkoutState"),
+    path('api/decline_workout/', views.decline_workout, name="declineWorkout"),
+    path('api/edit_workout/', views.edit_workout, name="edit_workout"),
+    path('api/get_workout/', views.get_workout, name="get_workout"),
+    path('api/delete_workout/', views.delete_workout, name="delete_workout"),
+    path('api/managerworkouts_filtered/', views.tobePublictedWorkouts_filtered, name="tobePublictedWorkouts_filtered")
+
+
 ]

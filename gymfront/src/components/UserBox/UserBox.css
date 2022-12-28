@@ -1,0 +1,27 @@
+.logoutbuttonStyle {
+    width: 100px;
+    height: 30px;
+    background: radial-gradient(circle, rgb(168, 25, 149) 0%, rgb(236, 109, 219) 100%);
+    border-radius: 7px;
+    color:#ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    border: 3px solid rgb(95, 21, 138);
+    
+    font-weight: 400;
+}
+.logoutbuttonStyle:active {
+    background:rgba(15, 15, 15, 1);
+}
+.usernameStyle {
+    font-size:30px;
+    display:inline;
+    margin-right: 5px;
+}
+
+.usernameWrapper{
+    display:flex;
+    align-items: center;
+
+
+}
